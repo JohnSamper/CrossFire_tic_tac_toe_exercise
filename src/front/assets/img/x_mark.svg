@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <filter id="glowX" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- X mark -->
+  <g stroke="#f98c45" stroke-width="18" stroke-linecap="round" filter="url(#glowX)">
+    <line x1="48" y1="48" x2="208" y2="208"/>
+    <line x1="208" y1="48" x2="48" y2="208"/>
+  </g>
+</svg>

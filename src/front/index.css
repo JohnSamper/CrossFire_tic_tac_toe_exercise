@@ -1,0 +1,262 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap');
+
+
+.navbar {
+  background: rgba(10, 16, 32, 0.85);
+  backdrop-filter: blur(6px);
+  border-bottom: 4px solid #FF914D; 
+  box-shadow: 0 0 12px #ff914d66;
+}
+.custombtn{
+
+    background:  #f17e36;
+  
+
+}
+
+.custombtn:hover {
+
+    background:  #5b62f7;
+
+}
+
+.foot{
+
+   border-top: 4px solid #FF914D; 
+}
+
+.crossfire-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 5rem;  
+  color: #f98c45;    
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.tagline {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.5rem;
+  color: #ffffff;   
+  margin-top: 0.5rem;
+  animation: slideInLeft 1s ease-out forwards;
+
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.crossfire-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: #f98c45;
+  animation: bounceIn 1.5s ease;
+
+   animation: bounceIn 1s ease, breathe 3s ease-in-out infinite, glow 3s ease-in-out infinite;
+  animation-delay: 0s, 1s, 1s;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0%   { text-shadow: 0 0 5px #f98c45; }
+  50%  { text-shadow: 0 0 20px #f98c45; }
+  100% { text-shadow: 0 0 5px #f98c45; }
+}
+
+
+
+.tagline {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-top: 0.5rem;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+
+.tagline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%; 
+  height: 3px;
+  width: 0;
+  background-color: #f98c45; 
+  animation: lineThrough 1s ease forwards;
+  animation-delay: 1.5s; 
+}
+
+@keyframes lineThrough {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+
+.home-page-graphics {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.tictactoe {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  position: relative;
+}
+
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  position: relative;
+}
+
+
+.cell.x::before,
+.cell.x::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background: #f98c45;
+  transform: rotate(45deg);
+  animation: drawX 0.5s forwards;
+}
+.cell.x::after {
+  transform: rotate(-45deg);
+  animation-delay: 0.5s;
+}
+
+@keyframes drawX {
+  to { width: 70%; }
+}
+
+/* Animate O */
+.cell.o::before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  border: 3px solid #5b62f7;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: drawO 0.6s forwards;
+}
+
+@keyframes drawO {
+  to { transform: scale(1); }
+}
+
+/* === Sequence Delays for "gameplay" === */
+.tictactoe .cell:nth-child(1) .x::before,
+.tictactoe .cell:nth-child(1) .x::after { animation-delay: 0.2s, 0.7s; }
+
+.tictactoe .cell:nth-child(2).o::before { animation-delay: 1s; }
+
+.tictactoe .cell:nth-child(4).x::before,
+.tictactoe .cell:nth-child(4).x::after { animation-delay: 1.5s, 2s; }
+
+.tictactoe .cell:nth-child(5).o::before { animation-delay: 2.5s; }
+
+.tictactoe .cell:nth-child(6).x::before,
+.tictactoe .cell:nth-child(6).x::after { animation-delay: 3s, 3.5s; }
+
+
+
+
+
+.winning-line {
+  position: absolute;
+  top: 50%; 
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: #ffeb3b; 
+  animation: winLine 1s ease forwards;
+  animation-delay: 4.2s; /* starts after moves finish */
+}
+
+@keyframes winLine {
+  to { width: 100%; }
+}
+
+
+
+
+
+/* this is the beginning of the TicTacToe Game css :)  */
+
+.game-board{
+  width: 30rem;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns:repeat(3,1fr);
+
+}
+
+.game-board .game-piece{
+ border: solid 0.3rem #0F172A;
+ background-size: cover ;
+ background-repeat: no-repeat;
+ background-position: center;
+ 
+}
+
+.game-board .game-piece:nth-child(-n+3) {
+  border-top: none;
+}
+
+
+.game-board .game-piece:nth-child(n+7) {
+  border-bottom: none;
+}
+
+.game-board .game-piece:nth-child(3n+1) {
+  border-left: none;
+}
+
+.game-board .game-piece:nth-child(3n) {
+  border-right: none;
+}
+
+.game-board .x {
+  background-color: none ;
+  
+}
+
+.game-board .o {
+  background-color:none ;
+}
